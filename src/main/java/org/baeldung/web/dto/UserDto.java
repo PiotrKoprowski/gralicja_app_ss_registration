@@ -13,9 +13,9 @@ public class UserDto {
     @Size(min = 1, message = "{Size.userDto.firstName}")
     private String firstName;
 
-    @NotNull
-    @Size(min = 1, message = "{Size.userDto.lastName}")
-    private String lastName;
+//    @NotNull
+//    @Size(min = 1, message = "{Size.userDto.lastName}")
+//    private String lastName;
 
     @ValidPassword
     private String password;
@@ -57,13 +57,13 @@ public class UserDto {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(final String lastName) {
-        this.lastName = lastName;
-    }
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(final String lastName) {
+//        this.lastName = lastName;
+//    }
 
     public String getPassword() {
         return password;
@@ -92,7 +92,7 @@ public class UserDto {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("UserDto [firstName=").append(firstName).append(", lastName=").append(lastName).append(", password=").append(password).append(", matchingPassword=").append(matchingPassword).append(", email=").append(email).append(", isUsing2FA=")
+        builder.append("UserDto [firstName=").append(firstName).append(", password=").append(password).append(", matchingPassword=").append(matchingPassword).append(", email=").append(email).append(", isUsing2FA=")
                 .append(isUsing2FA).append(", role=").append(role).append("]");
         return builder.toString();
     }

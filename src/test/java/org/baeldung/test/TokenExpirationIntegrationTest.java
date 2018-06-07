@@ -54,7 +54,7 @@ public class TokenExpirationIntegrationTest {
         user.setEmail(UUID.randomUUID().toString() + "@example.com");
         user.setPassword(UUID.randomUUID().toString());
         user.setFirstName("First");
-        user.setLastName("Last");
+//        user.setLastName("Last");
 
         entityManager.persist(user);
         String token = UUID.randomUUID().toString();

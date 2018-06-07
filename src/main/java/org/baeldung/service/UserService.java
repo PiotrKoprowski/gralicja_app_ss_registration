@@ -66,7 +66,7 @@ public class UserService implements IUserService {
         final User user = new User();
 
         user.setFirstName(accountDto.getFirstName());
-        user.setLastName(accountDto.getLastName());
+//        user.setLastName(accountDto.getLastName());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
         user.setUsing2FA(accountDto.isUsing2FA());

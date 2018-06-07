@@ -61,7 +61,7 @@ public class RegistrationControllerIntegrationTest {
         user.setEmail(UUID.randomUUID().toString() + "@example.com");
         user.setPassword(UUID.randomUUID().toString());
         user.setFirstName("First");
-        user.setLastName("Last");
+//        user.setLastName("Last");
 
         entityManager.persist(user);
         token = UUID.randomUUID().toString();
@@ -90,7 +90,7 @@ public class RegistrationControllerIntegrationTest {
 
         final MultiValueMap<String, String> param = new LinkedMultiValueMap<>();
         param.add("firstName", "");
-        param.add("lastName", "");
+//        param.add("lastName", "");
         param.add("email", "");
         param.add("password", "");
         param.add("matchingPassword", "");

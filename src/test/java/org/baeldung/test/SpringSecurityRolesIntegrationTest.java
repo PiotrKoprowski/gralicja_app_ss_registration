@@ -51,7 +51,7 @@ public class SpringSecurityRolesIntegrationTest {
 
         user = new User();
         user.setFirstName("John");
-        user.setLastName("Doe");
+//        user.setLastName("Doe");
         user.setPassword(passwordEncoder.encode("123"));
         user.setEmail("john@doe.com");
         user.setRoles(Arrays.asList(role));
@@ -78,7 +78,7 @@ public class SpringSecurityRolesIntegrationTest {
 
         user = new User();
         user.setFirstName("John");
-        user.setLastName("Doe");
+//        user.setLastName("Doe");
         user.setPassword(passwordEncoder.encode("123"));
         user.setEmail("john@doe.com");
         user.setRoles(Arrays.asList(role));

@@ -49,7 +49,7 @@ public class UserIntegrationTest {
         user.setEmail("test@example.com");
         user.setPassword("SecretPassword");
         user.setFirstName("First");
-        user.setLastName("Last");
+//        user.setLastName("Last");
         entityManager.persist(user);
 
         String token = UUID.randomUUID().toString();

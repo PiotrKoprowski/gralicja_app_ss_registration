@@ -108,7 +108,7 @@ public class UserServiceIntegrationTest {
         userDto.setPassword("SecretPassword");
         userDto.setMatchingPassword("SecretPassword");
         userDto.setFirstName("First");
-        userDto.setLastName("Last");
+//        userDto.setLastName("Last");
         assertNotNull(roleRepository.findByName("ROLE_ADMIN"));
         final Long adminRoleId = roleRepository.findByName("ROLE_ADMIN").getId();
         assertNotNull(adminRoleId);
@@ -242,7 +242,7 @@ public class UserServiceIntegrationTest {
         userDto.setPassword("SecretPassword");
         userDto.setMatchingPassword("SecretPassword");
         userDto.setFirstName("First");
-        userDto.setLastName("Last");
+//        userDto.setLastName("Last");
         userDto.setRole(0);
         return userDto;
     }

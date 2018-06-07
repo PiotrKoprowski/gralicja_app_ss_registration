@@ -26,7 +26,7 @@ public class User {
 
     private String firstName;
 
-    private String lastName;
+//    private String lastName;
 
     private String email;
 
@@ -67,13 +67,13 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(final String lastName) {
-        this.lastName = lastName;
-    }
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(final String lastName) {
+//        this.lastName = lastName;
+//    }
 
     public String getEmail() {
         return email;
@@ -152,7 +152,7 @@ public class User {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [id=").append(id).append(", firstName=").append(firstName).append(", lastName=").append(lastName).append(", email=").append(email).append(", password=").append(password).append(", enabled=").append(enabled).append(", isUsing2FA=")
+        builder.append("User [id=").append(id).append(", firstName=").append(firstName).append(", email=").append(email).append(", password=").append(password).append(", enabled=").append(enabled).append(", isUsing2FA=")
                 .append(isUsing2FA).append(", secret=").append(secret).append(", roles=").append(roles).append("]");
         return builder.toString();
     }
