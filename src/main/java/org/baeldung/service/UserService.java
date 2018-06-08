@@ -19,6 +19,7 @@ import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.model.VerificationToken;
 import org.baeldung.web.dto.UserDto;
 import org.baeldung.web.error.UserAlreadyExistException;
+import org.baeldung.web.error.UserAlreadyExistExceptionByFirstName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -62,6 +63,9 @@ public class UserService implements IUserService {
     public User registerNewUserAccount(final UserDto accountDto) {
         if (emailExist(accountDto.getEmail())) {
             throw new UserAlreadyExistException("There is an account with that email adress: " + accountDto.getEmail());
+        }
+        if (firstNameExist(accountDto.getFirstName())) {
+            throw new UserAlreadyExistExceptionByFirstName("There is an account with that name: " + accountDto.getFirstName());
         }
         final User user = new User();
 
@@ -199,6 +203,10 @@ public class UserService implements IUserService {
 
     private boolean emailExist(final String email) {
         return repository.findByEmail(email) != null;
+    }
+    
+    private boolean firstNameExist(final String firstName) {
+        return repository.findByFirstName(firstName) != null;
     }
 
     @Override

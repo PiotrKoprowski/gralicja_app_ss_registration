@@ -29,7 +29,10 @@
       <br/>
       <br/>
       <br/>
-      
+      	<a th:href="@{/loggedUsers}" th:text="#{label.pages.users.message}">View logged in users</a>	    
+      	<br/>
+	    <a th:href="@{/loggedUsersFromSessionRegistry}" th:text="#{label.pages.users.sessionregistry.message}">View logged in users</a>
+	    <br/>
       <div th:if="${#authentication.principal.using2FA}">
         You are using Two-step authentication <a href="#" class="btn btn-primary" onclick="disable2FA()">Disable 2FA</a> 
       </div>

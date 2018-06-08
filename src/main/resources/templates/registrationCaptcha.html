@@ -124,6 +124,9 @@ function register(event){
         else if(data.responseJSON.error == "InvalidReCaptcha"){
             $("#captchaError").show().html(data.responseJSON.message);
         }
+        else if(data.responseJSON.error == "UserAlreadyExistByFirstName"){
+            $("#firstNameError").show().html(data.responseJSON.message);
+        }
         else if(data.responseJSON.error == "UserAlreadyExist"){
             $("#emailError").show().html(data.responseJSON.message);
         }
