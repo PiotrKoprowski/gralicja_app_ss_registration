@@ -54,8 +54,8 @@ public class UserService implements IUserService {
     public static final String TOKEN_EXPIRED = "expired";
     public static final String TOKEN_VALID = "valid";
 
-    public static String QR_PREFIX = "https://chart.googleapis.com/chart?chs=200x200&chld=M%%7C0&cht=qr&chl=";
-    public static String APP_NAME = "SpringRegistration";
+//    public static String QR_PREFIX = "https://chart.googleapis.com/chart?chs=200x200&chld=M%%7C0&cht=qr&chl=";
+//    public static String APP_NAME = "SpringRegistration";
 
     // API
 
@@ -185,10 +185,10 @@ public class UserService implements IUserService {
         return TOKEN_VALID;
     }
 
-    @Override
-    public String generateQRUrl(User user) throws UnsupportedEncodingException {
-        return QR_PREFIX + URLEncoder.encode(String.format("otpauth://totp/%s:%s?secret=%s&issuer=%s", APP_NAME, user.getEmail(), user.getSecret(), APP_NAME), "UTF-8");
-    }
+//    @Override
+//    public String generateQRUrl(User user) throws UnsupportedEncodingException {
+//        return QR_PREFIX + URLEncoder.encode(String.format("otpauth://totp/%s:%s?secret=%s&issuer=%s", APP_NAME, user.getEmail(), user.getSecret(), APP_NAME), "UTF-8");
+//    }
 
 //    @Override
 //    public User updateUser2FA(boolean use2FA) {
