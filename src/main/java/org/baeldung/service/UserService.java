@@ -54,9 +54,6 @@ public class UserService implements IUserService {
     public static final String TOKEN_EXPIRED = "expired";
     public static final String TOKEN_VALID = "valid";
 
-//    public static String QR_PREFIX = "https://chart.googleapis.com/chart?chs=200x200&chld=M%%7C0&cht=qr&chl=";
-//    public static String APP_NAME = "SpringRegistration";
-
     // API
 
     @Override
@@ -70,10 +67,8 @@ public class UserService implements IUserService {
         final User user = new User();
 
         user.setFirstName(accountDto.getFirstName());
-//        user.setLastName(accountDto.getLastName());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
-//        user.setUsing2FA(accountDto.isUsing2FA());
         user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
         return repository.save(user);
     }
@@ -184,22 +179,6 @@ public class UserService implements IUserService {
         repository.save(user);
         return TOKEN_VALID;
     }
-
-//    @Override
-//    public String generateQRUrl(User user) throws UnsupportedEncodingException {
-//        return QR_PREFIX + URLEncoder.encode(String.format("otpauth://totp/%s:%s?secret=%s&issuer=%s", APP_NAME, user.getEmail(), user.getSecret(), APP_NAME), "UTF-8");
-//    }
-
-//    @Override
-//    public User updateUser2FA(boolean use2FA) {
-//        final Authentication curAuth = SecurityContextHolder.getContext().getAuthentication();
-//        User currentUser = (User) curAuth.getPrincipal();
-//        currentUser.setUsing2FA(use2FA);
-//        currentUser = repository.save(currentUser);
-//        final Authentication auth = new UsernamePasswordAuthenticationToken(currentUser, currentUser.getPassword(), curAuth.getAuthorities());
-//        SecurityContextHolder.getContext().setAuthentication(auth);
-//        return currentUser;
-//    }
 
     private boolean emailExist(final String email) {
         return repository.findByEmail(email) != null;

@@ -1,7 +1,7 @@
 package org.baeldung.spring;
 
 import org.baeldung.persistence.dao.UserRepository;
-import org.baeldung.security.google2fa.CustomAuthenticationProvider;
+import org.baeldung.security.authentication.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -39,8 +39,6 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler;
 
-//    @Autowired
-//    private CustomWebAuthenticationDetailsSource authenticationDetailsSource;
 
     @Autowired
     private UserRepository userRepository;
@@ -79,7 +77,6 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=true")
                 .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
-//                .authenticationDetailsSource(authenticationDetailsSource)
             .permitAll()
                 .and()
             .sessionManagement()
@@ -93,8 +90,6 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/logout.html?logSucc=true")
                 .deleteCookies("JSESSIONID")
                 .permitAll();
-//             .and()
-//                .rememberMe().rememberMeServices(rememberMeServices()).key("theKey");
     // @formatter:on
     }
 
@@ -118,9 +113,4 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         return new SessionRegistryImpl();
     }
 
-//    @Bean
-//    public RememberMeServices rememberMeServices() {
-//        CustomRememberMeServices rememberMeServices = new CustomRememberMeServices("theKey", userDetailsService, new InMemoryTokenRepositoryImpl());
-//        return rememberMeServices;
-//    }
 }

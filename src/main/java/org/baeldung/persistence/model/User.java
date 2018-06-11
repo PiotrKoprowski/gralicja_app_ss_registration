@@ -26,16 +26,12 @@ public class User {
 
     private String firstName;
 
-//    private String lastName;
-
     private String email;
 
     @Column(length = 60)
     private String password;
 
     private boolean enabled;
-
-//    private boolean isUsing2FA;
 
     private String secret;
 
@@ -66,14 +62,6 @@ public class User {
     public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
-
-//    public String getLastName() {
-//        return lastName;
-//    }
-//
-//    public void setLastName(final String lastName) {
-//        this.lastName = lastName;
-//    }
 
     public String getEmail() {
         return email;
@@ -106,14 +94,6 @@ public class User {
     public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
-
-//    public boolean isUsing2FA() {
-//        return isUsing2FA;
-//    }
-//
-//    public void setUsing2FA(boolean isUsing2FA) {
-//        this.isUsing2FA = isUsing2FA;
-//    }
 
     public String getSecret() {
         return secret;
