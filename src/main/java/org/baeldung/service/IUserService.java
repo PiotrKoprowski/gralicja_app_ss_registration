@@ -43,7 +43,7 @@ public interface IUserService {
 
     String generateQRUrl(User user) throws UnsupportedEncodingException;
 
-    User updateUser2FA(boolean use2FA);
+//    User updateUser2FA(boolean use2FA);
 
     List<String> getUsersFromSessionRegistry();
 
