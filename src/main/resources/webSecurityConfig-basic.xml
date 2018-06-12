@@ -31,11 +31,11 @@
 	</http>
 
 	<beans:bean id="myAuthenticationSuccessHandler"
-		class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
+		class="pl.gralicja.security.MySimpleUrlAuthenticationSuccessHandler" />
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService" />
 	</authentication-manager>
-	<beans:bean id="userDetailsService" class="org.baeldung.security.MyUserDetailsService" />
+	<beans:bean id="userDetailsService" class="pl.gralicja.security.MyUserDetailsService" />
 
 </beans:beans>
