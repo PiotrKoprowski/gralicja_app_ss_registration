@@ -96,7 +96,7 @@ public class RegistrationController {
             // }
             authWithoutPassword(user);
             model.addAttribute("message", messages.getMessage("message.accountVerified", null, locale));
-            return "redirect:/console.html?lang=" + locale.getLanguage();
+            return "redirect:/login?lang=" + locale.getLanguage();
         }
 
         model.addAttribute("message", messages.getMessage("auth.message." + result, null, locale));
