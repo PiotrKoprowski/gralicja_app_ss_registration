@@ -12,9 +12,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.gralicja.persistence.dao.BoardGameRepository;
 import pl.gralicja.persistence.dao.PrivilegeRepository;
 import pl.gralicja.persistence.dao.RoleRepository;
 import pl.gralicja.persistence.dao.UserRepository;
+import pl.gralicja.persistence.model.BoardGame;
 import pl.gralicja.persistence.model.Privilege;
 import pl.gralicja.persistence.model.Role;
 import pl.gralicja.persistence.model.User;
@@ -35,6 +37,9 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    
+    @Autowired
+    private BoardGameRepository boardGameRepository;
 
     // API
 
@@ -58,6 +63,10 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
         // == create initial user
         createUserIfNotFound("test@test.com", "Test", "test", new ArrayList<Role>(Arrays.asList(adminRole)));
+        
+        // == create initial boardGame
+        createBoardGameIfNotFound("Dixit", "Najlepsza gra dla rodziny i znajomych", "Karty i gry karciane", "Rebel", 3, 6, 8, 0.5);
+        createBoardGameIfNotFound("Wsiasc do pociagu", "Rozgrywka polega na laczeniu tras kolejowych na mapie Stanow Zjednoczonych", "Strategiczne i ekonomiczne", "Rebel", 2, 5, 10, 0.75);
 
         alreadySetup = true;
     }
@@ -96,6 +105,17 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         user.setRoles(roles);
         user = userRepository.save(user);
         return user;
+    }
+    
+    @Transactional
+    private final BoardGame createBoardGameIfNotFound(final String title, final String description, final String category, final String publisher, 
+    		final int minNumOfPlayers, final int maxNumOfPlayers, final int minPlayerAge, final double gameLength) {
+    	BoardGame boardGame = boardGameRepository.findByTitle(title);
+    	if(boardGame == null) {
+    		boardGame = new BoardGame(title, description, category, publisher, minNumOfPlayers, maxNumOfPlayers, minPlayerAge, gameLength);
+    		boardGame = boardGameRepository.save(boardGame);
+    	}
+        return boardGame;
     }
 
 }
