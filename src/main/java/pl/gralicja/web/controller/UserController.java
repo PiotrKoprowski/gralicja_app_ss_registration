@@ -19,7 +19,7 @@ public class UserController {
 
     @Autowired
     IUserService userService;
-
+    
     @RequestMapping(value = "/loggedUsers", method = RequestMethod.GET)
     public String getLoggedUsers(final Locale locale, final Model model) {
         model.addAttribute("users", activeUserStore.getUsers());

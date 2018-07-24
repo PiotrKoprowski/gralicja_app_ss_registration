@@ -15,6 +15,8 @@ import javax.persistence.Table;
 
 import org.jboss.aerogear.security.otp.api.Base32;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "user_account")
 public class User {
@@ -36,7 +38,7 @@ public class User {
     private String secret;
 
     //
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
@@ -78,7 +80,8 @@ public class User {
     public void setPassword(final String password) {
         this.password = password;
     }
-
+   
+    @JsonIgnore
     public Collection<Role> getRoles() {
         return roles;
     }
