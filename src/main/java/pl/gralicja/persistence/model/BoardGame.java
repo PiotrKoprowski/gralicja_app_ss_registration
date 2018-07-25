@@ -41,14 +41,14 @@ public class BoardGame {
 	private int minPlayerAge;
 
 	@NotNull
-	private double gameLength;
+	private int gameLength;
 
 	public BoardGame() {
 		super();
 	}
 
 	public BoardGame(String title, String description, String category, String publisher, int minNumOfPlayers,
-			int maxNumOfPlayers, int minPlayerAge, double gameLength) {
+			int maxNumOfPlayers, int minPlayerAge, int gameLength) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -120,7 +120,7 @@ public class BoardGame {
 		return gameLength;
 	}
 
-	public void setGameLength(double gameLength) {
+	public void setGameLength(int gameLength) {
 		this.gameLength = gameLength;
 	}
 
@@ -139,9 +139,7 @@ public class BoardGame {
 		int result = 1;
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(gameLength);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + gameLength;
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + maxNumOfPlayers;
 		result = prime * result + minNumOfPlayers;
@@ -170,7 +168,7 @@ public class BoardGame {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (Double.doubleToLongBits(gameLength) != Double.doubleToLongBits(other.gameLength))
+		if (gameLength != other.gameLength)
 			return false;
 		if (id != other.id)
 			return false;

@@ -65,8 +65,8 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         createUserIfNotFound("test@test.com", "Test", "test", new ArrayList<Role>(Arrays.asList(adminRole)));
         
         // == create initial boardGame
-        createBoardGameIfNotFound("Dixit", "Najlepsza gra dla rodziny i znajomych", "Karty i gry karciane", "Rebel", 3, 6, 8, 0.5);
-        createBoardGameIfNotFound("Wsiasc do pociagu", "Rozgrywka polega na laczeniu tras kolejowych na mapie Stanow Zjednoczonych", "Strategiczne i ekonomiczne", "Rebel", 2, 5, 10, 0.75);
+        createBoardGameIfNotFound("Dixit", "Najlepsza gra dla rodziny i znajomych", "Karty i gry karciane", "Rebel", 3, 6, 8, 30);
+        createBoardGameIfNotFound("Wsiasc do pociagu", "Rozgrywka polega na laczeniu tras kolejowych na mapie Stanow Zjednoczonych", "Strategiczne i ekonomiczne", "Rebel", 2, 5, 10, 45);
 
         alreadySetup = true;
     }
@@ -109,7 +109,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
     
     @Transactional
     private final BoardGame createBoardGameIfNotFound(final String title, final String description, final String category, final String publisher, 
-    		final int minNumOfPlayers, final int maxNumOfPlayers, final int minPlayerAge, final double gameLength) {
+    		final int minNumOfPlayers, final int maxNumOfPlayers, final int minPlayerAge, final int gameLength) {
     	BoardGame boardGame = boardGameRepository.findByTitle(title);
     	if(boardGame == null) {
     		boardGame = new BoardGame(title, description, category, publisher, minNumOfPlayers, maxNumOfPlayers, minPlayerAge, gameLength);
